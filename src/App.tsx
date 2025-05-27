@@ -11,6 +11,10 @@ const MANCHESTER = {
 };
 
 function App() {
+  const isMobile = window.matchMedia("pointer: coarse").matches;
+
+  console.log(isMobile);
+
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
 
@@ -19,10 +23,32 @@ function App() {
 
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: "mapbox://styles/mapbox/dark-v10",
+      // style: "mapbox://styles/mapbox/dark-v10",
+      style: "mapbox://styles/mannyhour/cmb6l9e7500pi01pagge87krt",
       center: [MANCHESTER.lng, MANCHESTER.lat],
-      zoom: 12,
+      zoom: 13,
+      pitch: 25,
+      antialias: true,
+      config: {
+        basemap: {},
+      },
     });
+
+    // map.current?.on("load", () => {
+    //   map.current?.addLayer({
+    //     id: "3d-buildings",
+    //     // source: "composite",
+    //     "source-layer": "building",
+    //     // filter: ["==", "extrude", "true"],
+    //     type: "fill-extrusion",
+    //     paint: {
+    //       "fill-extrusion-color": "#121212",
+    //       "fill-extrusion-height": ["get", "height"],
+    //       "fill-extrusion-base": ["get", "min_height"],
+    //       "fill-extrusion-opacity": 0.7,
+    //     },
+    //   });
+    // });
 
     return () => {
       map.current?.remove();
