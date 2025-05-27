@@ -5,11 +5,9 @@ import "./App.css";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
-// Manchester coordinates
-const MANCHESTER_CENTER = {
-  lng: -2.2426,
-  lat: 53.4808,
-  zoom: 12,
+const MANCHESTER = {
+  lng: -2.2448,
+  lat: 53.4794,
 };
 
 function App() {
@@ -21,9 +19,9 @@ function App() {
 
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: "mapbox://styles/mapbox/dark-v11",
-      center: [MANCHESTER_CENTER.lng, MANCHESTER_CENTER.lat],
-      zoom: MANCHESTER_CENTER.zoom,
+      style: "mapbox://styles/mapbox/dark-v10",
+      center: [MANCHESTER.lng, MANCHESTER.lat],
+      zoom: 12,
     });
 
     return () => {
